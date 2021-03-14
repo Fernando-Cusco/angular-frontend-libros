@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row" style="padding: 20px;">
+      <button class="btn btn-danger" routerLink="/autor">Regresar</button>
+    </div>
+    <form #form="ngForm">
+        <div class="mb-3">
+          <label for="nombres" class="form-label">Nombres</label>
+          <input type="text" class="form-control" id="nombres" name="nombres" [(ngModel)]="autor.nombres">
+        </div>
+
+        <div class="mb-3">
+            <label for="nacio" class="form-label">Nacionalidad</label>
+            <input type="text" class="form-control" id="nacio" name="nacio" [(ngModel)]="autor.nacionalidad">
+          </div>
+
+          <div class="mb-3">
+            <label for="npu" class="form-label">Número de publicaciones</label>
+            <input type="text" class="form-control" id="npu" name="npu" [(ngModel)]="autor.cantidadPublicaciones">
+          </div>
+
+          <div class="mb-3">
+            <label for="fecha" class="form-label">Fecha Nacimiento</label>
+            <input type="datetime" class="form-control" id="fecha" name="fecha" [(ngModel)]="fecha" placeholder="01/01/2020">
+          </div>
+        
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button *ngIf="id == null" type="submit" class="btn btn-primary" (click)="save()" [disabled]="!form.form.valid">Guardar</button>
+      </form>
+</div>

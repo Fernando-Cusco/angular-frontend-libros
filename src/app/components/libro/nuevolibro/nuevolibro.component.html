@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row" style="padding: 20px;">
+        <button class="btn btn-danger" routerLink="/libro">Regresar</button>
+      </div>
+      <form>
+          <div class="mb-3">
+            <label for="titulo" class="form-label">Título</label>
+            <input type="text" class="form-control" id="titulo" name="titulo" [(ngModel)]="libro.titulo">
+          </div>
+  
+          <div class="mb-3">
+              <label for="descr" class="form-label">Descripción</label>
+              <input type="text" class="form-control" id="descr" name="descr" [(ngModel)]="libro.descripcion">
+            </div>
+  
+            <div class="mb-3">
+              <label for="npa" class="form-label">Número de paginas</label>
+              <input type="number" class="form-control" id="npa" name="npa" [(ngModel)]="libro.numeroPaginas">
+            </div>
+  
+            <div class="mb-3">
+              <label for="stock" class="form-label">Stock</label>
+              <input type="number" class="form-control" id="stock" name="stock" [(ngModel)]="libro.stock">
+            </div>
+          
+          <div class="mb-3 form-check">
+            <input *ngIf="!libro.id" type="file" accept=".png, .jpg, .jpeg" (change)="subirArchivo($event)">
+            <img *ngIf="libro.id" class="img" src="http://localhost:8080/api/imagen/{{libro.imagen}}" alt="portada">
+          </div>
+          
+
+          <div class="row">
+            <div class="col" *ngIf="!libro.id">
+              <div class="mb-3 form-check">
+                  <mat-form-field>
+                      <mat-label>Autor</mat-label>
+                    <input type="text" placeholder="Enter Location" matInput [formControl]="ngForm"
+                         [matAutocomplete]="auto">
+                       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn">
+                         <mat-option *ngFor="let autor of autoresFilter | async" [value]="autor" >
+                           {{autor.nombres}}
+                        </mat-option>
+                    </mat-autocomplete>
+                 </mat-form-field>
+                 
+                 <button class="btn btn-success btn-sm" style="margin-left: 30px;" (click)="agregarAutor()">Agregar Autor</button>
+              </div>
+              
+            </div>
+            <div class="col">
+              Autores
+              <table class="table">
+                <thead>
+                  <th>Nombres</th>
+                  <th *ngIf="!libro.id">Eliminar</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let autor of autoresLibro">
+                    <td>{{ autor.nombres }}</td>
+                    <td *ngIf="!libro.id"><button class="btn btn-danger btn-sm" (click)="removerAutor(autor)">Eliminar</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <button *ngIf="!libro.id" type="submit" class="btn btn-primary" (click)="saveLibro()">Guardar</button>
+        </form>
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row" style="padding: 20px;">
+        <button class="btn btn-primary" routerLink="/nuevolibro">Nuevo Libro</button>
+    </div>
+    <div *ngIf="libros == null" class="alert alert-info">
+        No hay libros
+    </div>
+    <div class="table-responsive" *ngIf="libros?.length > 0">
+        <table class="table">
+            <thead>
+                <th>Titulo</th>
+                <th>Descripción</th>
+                <th>Número de pagina</th>
+                <th>Stock</th>
+                <th>Ver</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let libro of libros">
+                    <td>{{ libro.titulo }}</td>
+                    <td>{{ libro.descripcion }}</td>
+                    <td>{{ libro.numeroPaginas }}</td>
+                    <td>{{ libro.stock }}</td>
+                    <td><button class="btn btn-success" style="border-radius: 50px;" routerLink="/nuevolibro/{{libro.id}}">Ver</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

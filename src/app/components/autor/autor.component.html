@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="col">
+        <div class="row" style="padding: 20px;">
+            <button class="btn btn-primary" routerLink="/nuevo">Nuevo Autor</button>
+        </div>
+    </div>
+    <div *ngIf="autores == null" class="alert alert-info">
+        No hay autores
+    </div>
+    <div class="table-responsive" *ngIf="autores?.length > 0">
+        <table class="table">
+            <thead>
+                <th>Nombres</th>
+                <th>Nacionalidad</th>
+                <th>Publicaciones</th>
+                <th>Fecha Nacimiento</th>
+                <th>Ver</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let autor of autores">
+                    <td>{{ autor.nombres }}</td>
+                    <td>{{ autor.nacionalidad }}</td>
+                    <td>{{ autor.cantidadPublicaciones }}</td>
+                    <td>{{ autor.fechaNacimiento }}</td>
+                    <td><button class="btn btn-success" style="border-radius: 50px;" routerLink="/nuevo/{{autor.id}}">Ver</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</div>

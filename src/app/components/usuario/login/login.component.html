@@ -1,0 +1,18 @@
+<div id="fondo">
+    <div class="container">
+        <div class="box">
+            <form [formGroup]="credencialesForm" (ngSubmit)="onSubmit()">
+                <span class="text-center">Login</span>
+                <div class="input-container">
+                    <input type="email" formControlName="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-container">
+                    <input type="password" formControlName="password" required>
+                    <label>Password</label>
+                </div>
+                <button class="bt" type="submit" [disabled]="!credencialesForm.valid">Enviar</button>
+            </form>
+        </div>
+    </div>
+</div>

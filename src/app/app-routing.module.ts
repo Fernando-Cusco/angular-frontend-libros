@@ -5,11 +5,11 @@ import { NuevoComponent } from './components/autor/nuevo/nuevo.component';
 import { LibroComponent } from './components/libro/libro.component';
 import { DetallelibroComponent } from './components/libro/detallelibro/detallelibro.component';
 import { NuevolibroComponent } from './components/libro/nuevolibro/nuevolibro.component';
+import { LoginComponent } from './components/usuario/login/login.component';
+import { RegistroComponent } from './components/usuario/registro/registro.component';
 
 const routes: Routes = [
-  {
-    path: '', component: AutorComponent
-  },
+  
   {
     path: 'autor', component: AutorComponent,
   },
@@ -30,6 +30,15 @@ const routes: Routes = [
   },
   {
     path: 'nuevolibro/:id', component: NuevolibroComponent,
+  },
+  {
+    path: '', component: LoginComponent
+  },
+  {
+    path: 'usuario/login', component: LoginComponent
+  },
+  {
+    path: 'usuario/registro', component: RegistroComponent,
   },
 ];
 

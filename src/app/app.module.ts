@@ -18,6 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AutorService } from './service/autor.service';
 import { LibroService } from './service/libro.service';
 import { ImagenService } from './service/imagen.service';
+import { RegistroComponent } from './components/usuario/registro/registro.component';
+import { LoginComponent } from './components/usuario/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +29,8 @@ import { ImagenService } from './service/imagen.service';
     NuevoComponent,
     NuevolibroComponent,
     DetallelibroComponent,
+    RegistroComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,8 @@ import { ImagenService } from './service/imagen.service';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
     
   ],
   providers: [

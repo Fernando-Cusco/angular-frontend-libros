@@ -4,7 +4,7 @@ import { Validators } from '@angular/forms'
 import { Credenciales } from '../../utils/credenciales';
 import { UsuarioService } from '../../../service/usuario.service';
 import { Usuario } from '../../../models/usuario';
-
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-login',
@@ -30,10 +30,25 @@ export class LoginComponent implements OnInit {
     this.credenciales.password = this.credencialesForm.value['password']
     this.service.login(this.credenciales).subscribe(response => {
       this.usuario = response
-      console.log(this.usuario);
+      if (this.usuario.correctLogin) {
+        this.notification(`Bienvenido, ${this.usuario.nombres}`)
+      } else {
+        this.notification('Datos incorrectos')
+        
+      }
     }, error => {
       console.log('error', error);
       
+    })
+  }
+
+  notification(mensaje: string) {
+    Swal.fire({
+      position: 'center',
+      icon: 'info',
+      title: mensaje,
+      showConfirmButton: false,
+      timer: 1000
     })
   }
 

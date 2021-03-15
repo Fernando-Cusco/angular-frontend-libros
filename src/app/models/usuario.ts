@@ -8,4 +8,5 @@ export class Usuario {
     password: string;
     estado: string;
     createAt: Date;
+    correctLogin: boolean;
 }

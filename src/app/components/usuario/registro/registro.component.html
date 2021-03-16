@@ -1,1 +1,25 @@
-<p>registro works!</p>
+<div class="body">
+    <div class="container">
+        <div class="registro">
+            <p class="text">Registrate Ahora</p>
+            <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+                <span class="font-user material-icons">account_box</span>
+                <input type="text" placeholder="Nombres" autocomplete="off" required minlength="3" formControlName="nombres">
+
+                <span class="font-user material-icons">account_box</span>
+                <input type="text" placeholder="Apellidos" autocomplete="off" required minlength="3" formControlName="apellidos">
+
+                <span class="font-user material-icons">fingerprint</span>
+                <input type="text" placeholder="Identificación" autocomplete="off" required minlength="10" maxlength="10" formControlName="identificacion">
+
+                <span class="font-email material-icons">email</span>
+                <input type="email" placeholder="Correo" autocomplete="off" required formControlName="email">
+                
+                <span class="font-password material-icons">password</span>
+                <input type="password" placeholder="contraseña" autocomplete="off" required minlength="6" formControlName="password">
+                
+                <input type="submit" value="registrarse" title="Registrar tu cuenta">
+            </form>
+        </div>
+    </div>
+</div>

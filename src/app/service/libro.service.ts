@@ -5,6 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { Libro } from '../models/libro';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { LocalstorageService } from './localstorage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +13,14 @@ import { Router } from '@angular/router';
 export class LibroService {
 
   private url: string = environment.api
-  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
+  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json', 'Accept': 'application/json','Authorization': this.localstorage.getToken()})
 
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private localstorage: LocalstorageService) { }
 
   
   all():Observable<Libro[]> {
-    return this.http.get<Libro[]>(`${this.url}libro/all`).pipe(
+    return this.http.get<Libro[]>(`${this.url}libro/all`, {headers: this.httpHeaders}).pipe(
       catchError(error => {
         console.log('Error al listar los libros');
         return throwError(error)
@@ -28,7 +29,7 @@ export class LibroService {
   }
 
   findById(id: number):Observable<Libro>{
-    return this.http.get<Libro>(`${this.url}/libro/${id}`).pipe(
+    return this.http.get<Libro>(`${this.url}/libro/${id}`, {headers: this.httpHeaders}).pipe(
       catchError(error => {
         console.log('Error al buscar el libro');
         this.router.navigate(['libro'])

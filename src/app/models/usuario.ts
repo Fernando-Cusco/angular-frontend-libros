@@ -1,3 +1,4 @@
+import { Rol } from './rol';
 export class Usuario {
     id: number;
     nombres: string;
@@ -9,4 +10,6 @@ export class Usuario {
     estado: string;
     createAt: Date;
     correctLogin: boolean;
+    roles: Rol[];
+    token: string;
 }

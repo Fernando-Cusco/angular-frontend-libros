@@ -1,7 +1,7 @@
 import { Credenciales } from './../components/utils/credenciales';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { Usuario } from '../models/usuario';
 import { catchError } from 'rxjs/operators';
@@ -17,11 +17,20 @@ export class UsuarioService {
   constructor(private http: HttpClient) { }
 
   login(credenciales: Credenciales): Observable<Usuario> {
-    return this.http.post<Usuario>(`${this.url}/usuario/login`, credenciales, {headers: this.httpHeaders}).pipe(
+    return this.http.post<Usuario>(`${this.url}usuario/login`, credenciales, {headers: this.httpHeaders}).pipe(
       catchError(error => {
         return throwError(error)
       })
     )
+  }
+
+  registrar(usuario: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>(`${this.url}usuario`, usuario, {headers: this.httpHeaders}).pipe(
+      catchError(error => {
+        return throwError(error)
+      })
+    )
+
   }
 
 }

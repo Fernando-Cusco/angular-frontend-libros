@@ -29,7 +29,7 @@ export class LibroService {
   }
 
   findById(id: number):Observable<Libro>{
-    return this.http.get<Libro>(`${this.url}/libro/${id}`, {headers: this.httpHeaders}).pipe(
+    return this.http.get<Libro>(`${this.url}libro/${id}`, {headers: this.httpHeaders}).pipe(
       catchError(error => {
         console.log('Error al buscar el libro');
         this.router.navigate(['libro'])
@@ -39,7 +39,7 @@ export class LibroService {
   }
 
   save(libro: Libro): Observable<Libro> {
-    return this.http.post<Libro>(`${this.url}/libro`, libro, {headers: this.httpHeaders}).pipe(
+    return this.http.post<Libro>(`${this.url}libro`, libro, {headers: this.httpHeaders}).pipe(
       catchError(error => {
         console.log('Error al guardar el libro');
         return throwError(error)

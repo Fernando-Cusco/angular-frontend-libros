@@ -20,6 +20,8 @@ import { LibroService } from './service/libro.service';
 import { ImagenService } from './service/imagen.service';
 import { RegistroComponent } from './components/usuario/registro/registro.component';
 import { LoginComponent } from './components/usuario/login/login.component';
+import { AuthGuard } from './components/utils/guard-route';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,13 +44,14 @@ import { LoginComponent } from './components/usuario/login/login.component';
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     
   ],
   providers: [
+    AuthGuard,
     AutorService,
     LibroService,
-    ImagenService
+    ImagenService,
   ],
   bootstrap: [AppComponent]
 })

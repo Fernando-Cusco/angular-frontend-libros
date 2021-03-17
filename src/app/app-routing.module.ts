@@ -7,29 +7,31 @@ import { DetallelibroComponent } from './components/libro/detallelibro/detalleli
 import { NuevolibroComponent } from './components/libro/nuevolibro/nuevolibro.component';
 import { LoginComponent } from './components/usuario/login/login.component';
 import { RegistroComponent } from './components/usuario/registro/registro.component';
+import { AuthGuard } from './components/utils/guard-route';
+
 
 const routes: Routes = [
   
   {
-    path: 'autor', component: AutorComponent,
+    path: 'autor', component: AutorComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'nuevo', component: NuevoComponent,
+    path: 'nuevo', component: NuevoComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'nuevo/:id', component: NuevoComponent,
+    path: 'nuevo/:id', component: NuevoComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'libro', component: LibroComponent,
+    path: 'libro', component: LibroComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'libro/:id', component: DetallelibroComponent,
+    path: 'libro/:id', component: DetallelibroComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'nuevolibro', component: NuevolibroComponent,
+    path: 'nuevolibro', component: NuevolibroComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'nuevolibro/:id', component: NuevolibroComponent,
+    path: 'nuevolibro/:id', component: NuevolibroComponent, canActivate: [AuthGuard]
   },
   {
     path: '', component: LoginComponent

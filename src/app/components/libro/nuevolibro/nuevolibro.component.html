@@ -26,7 +26,7 @@
           
           <div class="mb-3 form-check">
             <input *ngIf="!libro.id" type="file" accept=".png, .jpg, .jpeg" (change)="subirArchivo($event)">
-            <img *ngIf="libro.id" class="img" src="http://localhost:8080/api/imagen/{{libro.imagen}}" alt="portada">
+            <img *ngIf="libro.id" class="img" src="http://localhost:8080/api/imagen/get/{{libro.imagen}}" alt="portada">
           </div>
           
 

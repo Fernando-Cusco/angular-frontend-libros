@@ -21,6 +21,9 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder, private service: UsuarioService, private router: Router, private localstorage: LocalstorageService) { }
 
   ngOnInit(): void {
+    if (this.localstorage.tokenValid()) {
+      this.router.navigate(['libro']);
+    }
     this.credencialesForm =  this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +21,9 @@ import { ImagenService } from './service/imagen.service';
 import { RegistroComponent } from './components/usuario/registro/registro.component';
 import { LoginComponent } from './components/usuario/login/login.component';
 import { AuthGuard } from './components/utils/guard-route';
+import { PerfilComponent } from './components/usuario/perfil/perfil.component';
+import { ErrorServer } from './components/utils/handlers';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,7 @@ import { AuthGuard } from './components/utils/guard-route';
     DetallelibroComponent,
     RegistroComponent,
     LoginComponent,
+    PerfilComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,13 +49,18 @@ import { AuthGuard } from './components/utils/guard-route';
     MatInputModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    MatTabsModule
     
   ],
   providers: [
+    {
+      provide: ErrorHandler,
+      useClass: ErrorServer
+    },
     AuthGuard,
     AutorService,
     LibroService,
-    ImagenService,
+    ImagenService
   ],
   bootstrap: [AppComponent]
 })

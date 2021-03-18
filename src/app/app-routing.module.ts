@@ -8,6 +8,7 @@ import { NuevolibroComponent } from './components/libro/nuevolibro/nuevolibro.co
 import { LoginComponent } from './components/usuario/login/login.component';
 import { RegistroComponent } from './components/usuario/registro/registro.component';
 import { AuthGuard } from './components/utils/guard-route';
+import { PerfilComponent } from './components/usuario/perfil/perfil.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,9 @@ const routes: Routes = [
   },
   {
     path: 'usuario/registro', component: RegistroComponent,
+  },
+  {
+    path: 'usuario/perfil', component: PerfilComponent, canActivate: [AuthGuard]
   },
 ];
 

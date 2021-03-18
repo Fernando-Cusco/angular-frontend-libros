@@ -11,8 +11,11 @@
                     <input type="password" formControlName="password" required>
                     <label>Password</label>
                 </div>
-                <button class="bt" type="submit" [disabled]="!credencialesForm.valid">Enviar</button>
+                <button class="bt" type="submit" [disabled]="!credencialesForm.valid">Iniciar</button>
             </form>
+            <div class="registro">
+                <button (click)="registrase()">Registrate aqui</button>
+            </div>
         </div>
     </div>
 </div>
